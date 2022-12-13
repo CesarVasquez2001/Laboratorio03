@@ -19,6 +19,10 @@ public class MenuActivity extends AppCompatActivity {
     private static String TAG = "MenuActivity";
     private ArrayList<Postulante> lista = new ArrayList<Postulante>();
 
+    Helper helper;
+    private ArrayList<Postulante> internalStorage ;
+
+
     ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
@@ -26,6 +30,16 @@ public class MenuActivity extends AppCompatActivity {
                 if(result.getData()!=null && result.getData().getSerializableExtra(PostulanteRegistroActivity.KEY_NAME) != null){
                     Postulante p = (Postulante) result.getData().getSerializableExtra(PostulanteRegistroActivity.KEY_NAME);
                     lista.add(p);
+
+
+                    helper = new Helper(lista,getApplicationContext());
+                    helper.GuardaEnArchivo();
+
+                    // Probar por que se guardo
+                    internalStorage = helper.LeeDelArchivo();
+                    Log.d(TAG,internalStorage+"INTERNAL STORAGE");
+
+
                 }
             }
         }
@@ -36,17 +50,13 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        lista.add(new Postulante());
-
         Button btnInfo = findViewById(R.id.buttonInfo);
         Button btnNew = findViewById(R.id.buttonNew);
-
 
 
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, lista + "");
 
                 Intent intent = new Intent(getApplicationContext(), PostulanteInfoActivity.class);
                 intent.putExtra("POSTULANTE_EXTRA", lista);
