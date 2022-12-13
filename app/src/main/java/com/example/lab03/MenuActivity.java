@@ -31,11 +31,9 @@ public class MenuActivity extends AppCompatActivity {
                     Postulante p = (Postulante) result.getData().getSerializableExtra(PostulanteRegistroActivity.KEY_NAME);
                     lista.add(p);
 
+                    helper.GuardaEnArchivo(lista);
 
-                    helper = new Helper(lista,getApplicationContext());
-                    helper.GuardaEnArchivo();
-
-                    // Probar por que se guardo
+                    // Probar que se guardo
                     internalStorage = helper.LeeDelArchivo();
                     Log.d(TAG,internalStorage+"INTERNAL STORAGE");
 
@@ -53,6 +51,10 @@ public class MenuActivity extends AppCompatActivity {
         Button btnInfo = findViewById(R.id.buttonInfo);
         Button btnNew = findViewById(R.id.buttonNew);
 
+        // Inicializar la lista con los datos guardados en el internal storage
+        helper = new Helper(getApplicationContext());
+        lista = helper.LeeDelArchivo();
+        Log.d(TAG,lista+"\nLISTA INICIAL");
 
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override

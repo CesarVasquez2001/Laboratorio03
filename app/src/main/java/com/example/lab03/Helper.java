@@ -11,16 +11,17 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Helper {
-    private ArrayList<Postulante> lista = new ArrayList<Postulante>();
     Context context;
 
     public Helper(ArrayList<Postulante> lista, Context context) {
-        this.lista = lista;
+        //this.lista = lista;
         this.context = context;
     }
-
+    public Helper(Context context){
+        this.context=context;
+    }
     // Método que guarda la lista a un archivo interno
-    public void GuardaEnArchivo() {
+    public void GuardaEnArchivo(ArrayList<Postulante> lista) {
         // El objeto File me permite acceder el archivo (en este caso, para escribir en él)
         // (obtengo la ruta donde almacenarlo; en la carpeta de la app)
         File ruta = context.getApplicationContext().getFilesDir();
@@ -44,7 +45,7 @@ public class Helper {
 
     // Método que lee del archivo y lo pone en la lista
     public ArrayList<Postulante> LeeDelArchivo() {
-
+        ArrayList<Postulante> lista = null;
         // El objeto File con la ruta donde almacenarlo
         File ruta = context.getApplicationContext().getFilesDir();
         // Éste es el nombre del archivo
