@@ -13,10 +13,7 @@ import java.util.ArrayList;
 public class Helper {
     Context context;
 
-    public Helper(ArrayList<Postulante> lista, Context context) {
-        //this.lista = lista;
-        this.context = context;
-    }
+
     public Helper(Context context){
         this.context=context;
     }

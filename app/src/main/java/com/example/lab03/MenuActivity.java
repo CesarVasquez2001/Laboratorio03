@@ -30,10 +30,9 @@ public class MenuActivity extends AppCompatActivity {
                 if(result.getData()!=null && result.getData().getSerializableExtra(PostulanteRegistroActivity.KEY_NAME) != null){
                     Postulante p = (Postulante) result.getData().getSerializableExtra(PostulanteRegistroActivity.KEY_NAME);
                     lista.add(p);
-
+                    // Actualiza el archivo en el internal storage
                     helper.GuardaEnArchivo(lista);
-
-                    // Probar que se guardo
+                    // Probar que se guardo en el internal storage
                     internalStorage = helper.LeeDelArchivo();
                     Log.d(TAG,internalStorage+"INTERNAL STORAGE");
 
