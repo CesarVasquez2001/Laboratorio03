@@ -9,6 +9,29 @@ public class Postulante  implements Serializable {
     private String colegio;
     private String carrera;
 
+    public boolean isExpandable() {
+        return expandable;
+    }
+
+    public void setExpandable(boolean expandable) {
+        this.expandable = expandable;
+    }
+
+    private boolean expandable;
+
+
+
+    public Postulante(String DNI, String nombres, String apellidos, String fechaNac, String colegio, String carrera) {
+        this.DNI = DNI;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.fechaNac = fechaNac;
+        this.colegio = colegio;
+        this.carrera = carrera;
+        this.expandable=false;
+    }
+
+
     public String getDNI() {
         return DNI;
     }
@@ -33,23 +56,7 @@ public class Postulante  implements Serializable {
         return carrera;
     }
 
-    public Postulante(String DNI, String nombres, String apellidos, String fechaNac, String colegio, String carrera) {
-        this.DNI = DNI;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.fechaNac = fechaNac;
-        this.colegio = colegio;
-        this.carrera = carrera;
-    }
 
-    public Postulante() {
-        this.DNI = "12345";
-        this.nombres = "test";
-        this.apellidos = "test";
-        this.fechaNac = "test";
-        this.colegio = "test";
-        this.carrera = "test";
-    }
 
     @Override
     public String toString() {

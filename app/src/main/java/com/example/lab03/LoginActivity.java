@@ -19,8 +19,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         HashMap<String, String> cuentas = new HashMap<String, String>();
-        cuentas.put("usuario1", "usuario1");
-        cuentas.put("usuario2", "usuario2");
+        cuentas.put("1", "1");
+        cuentas.put("2", "2");
 
 
         Button btnLogin = findViewById(R.id.buttonLogin);

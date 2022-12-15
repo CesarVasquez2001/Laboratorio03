@@ -42,7 +42,7 @@ public class Helper {
 
     // Método que lee del archivo y lo pone en la lista
     public ArrayList<Postulante> LeeDelArchivo() {
-        ArrayList<Postulante> lista = null;
+        ArrayList<Postulante> lista = new ArrayList<Postulante>();
         // El objeto File con la ruta donde almacenarlo
         File ruta = context.getApplicationContext().getFilesDir();
         // Éste es el nombre del archivo

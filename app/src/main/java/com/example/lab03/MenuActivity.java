@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity {
     private static String TAG = "MenuActivity";
-    private ArrayList<Postulante> lista = new ArrayList<Postulante>();
+    private ArrayList<Postulante> lista;
 
     Helper helper;
     private ArrayList<Postulante> internalStorage ;
@@ -49,7 +49,7 @@ public class MenuActivity extends AppCompatActivity {
 
         Button btnInfo = findViewById(R.id.buttonInfo);
         Button btnNew = findViewById(R.id.buttonNew);
-
+        Button btnRecycler = findViewById(R.id.buttonRecyclerView);
         // Inicializar la lista con los datos guardados en el internal storage
         helper = new Helper(getApplicationContext());
         lista = helper.LeeDelArchivo();
@@ -70,6 +70,13 @@ public class MenuActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), PostulanteRegistroActivity.class);
                 startForResult.launch(intent);
+            }
+        });
+        btnRecycler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), PostulanteRecyclerListActivity.class);
+                startActivity(intent);
             }
         });
     }
